@@ -1,0 +1,36 @@
+<configuration status="DEBUG">
+
+    <!-- Define a property for the base path -->
+    <property name="logBasePath" value="D:/exam_portal/backend/examPortal/src/main/resources/logs/" />
+
+    <!-- File Appender -->
+    <appender name="examPortalAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logBasePath}examPortal.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${logBasePath}examPortal.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- Keep 7 days of logs -->
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{dd.MM.yyyy HH:mm:ss} %-5p %t [%C{1}]: %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Console Appender -->
+    <appender name="examPortalConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{dd.MM.yyyy HH:mm:ss} %-5p %t [%C{1}]: %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Logger Configuration -->
+    <logger name="com.hs.examPortal" level="info">
+        <appender-ref ref="examPortalAppender" />
+    </logger>
+
+    <!-- Console Logger Configuration -->
+    <root level="info">
+        <appender-ref ref="examPortalConsoleAppender" />
+    </root>
+
+</configuration>

@@ -2,6 +2,8 @@ package com.hs.examportal.service;
 
 import com.hs.examportal.entity.User;
 
+import java.util.List;
+
 public interface IUserService {
     /**
      * Service method to create user
@@ -12,4 +14,8 @@ public interface IUserService {
     public User createUser(User user);
 
     public User getUserById(String id);
+
+    public List<User> getAllUsers();
+
+    User updateUser(String id, User user);
 }
